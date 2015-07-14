@@ -1,10 +1,13 @@
 package cn.itcast.user.web.action;
 
+import java.util.List;
+
 import org.apache.struts2.ServletActionContext;
 
 import cn.itcast.user.domain.User;
 import cn.itcast.user.service.UserService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
@@ -15,9 +18,36 @@ import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
  *
  */
 public class UserAction extends ActionSupport implements ModelDriven<User> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private UserService userService = new UserService();
 	
 	private User user = new User();//模型驱动需要实例化属性
+	
+	public String doAdd(){
+		return "doAddSucc";
+	}
+	
+	public String del(){
+		User currUser = userService.findByUid(user.getUid());
+		
+		userService.delUser(user.getUid());
+		return "delSucc";
+		
+	}
+	
+	/**
+	 * 条件查询用户
+	 * @return
+	 */
+	public String conditionsQuery(){
+		List<User> list = userService.findByAllUser(user);
+		ActionContext.getContext().getValueStack().push(list);
+		return "cquerySucc";
+	}
 	
 	/**
 	 * 查询所有员工
@@ -29,6 +59,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		 * 2. 把数据压入栈顶
 		 * 3. 返回到list.jsp显示数据。
 		 */
+		List<User> list = userService.findByAllUser(user);
+		ActionContext.getContext().getValueStack().push(list);
 		return "listSucc";
 	}
 	
@@ -58,5 +90,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	@Override
 	public User getModel() {
 		return user;
+	}
+	
+	
+	public Boolean getlsi(){
+		return true;
 	}
 }

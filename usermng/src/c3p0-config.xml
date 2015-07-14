@@ -10,5 +10,5 @@
 		<property name="initialPoolSize">10</property>
 		<property name="minPoolSize">2</property>
 		<property name="maxPoolSize">10</property>
-	</default-config>>
+	</default-config>
 </c3p0-config>

@@ -12,6 +12,9 @@
     		<result name="loginInput">/login/login.jsp</result>
     		<result name="loginError">/login/login.jsp</result>
     		<result name="listSucc">/user/list.jsp</result>
+    		<result name="cquerySucc">/user/list.jsp</result>
+    		<result type="redirectAction" name="delSucc">user_list</result>
+    		<result name="doAddSucc">/user/add.jsp</result>
     	</action>
     </package>
 </struts>

@@ -19,6 +19,19 @@ public class User {
 	private String filepath;// 简历的真实路径
 	private String filename;// 简历的下载名称
 	private String remark;// 备注
+	
+	private String isUpload;//是否上传简历 1是2否
+	private String demo;
+	
+	
+
+	public String getIsUpload() {
+		return isUpload;
+	}
+
+	public void setIsUpload(String isUpload) {
+		this.isUpload = isUpload;
+	}
 
 	public String getUid() {
 		return uid;

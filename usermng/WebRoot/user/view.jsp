@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Language" content="zh-cn">
@@ -8,7 +9,7 @@
 		<script language="javascript" src="<c:url value='/js/public.js'/>"></script>
 	</HEAD>
 	<body>
-		<form id="userAction_save_do" name="Form1" action="<c:url value='/user/userAction_save.do'/>" method="post" enctype="multipart/form-data">
+		<s:form action="" namespace="/" theme="simple" enctype="multipart/form-data">
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 				<tr>
@@ -24,13 +25,13 @@
 						登录名：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						caocao
+						<s:property value="loginname"/>
 					</td>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						用户姓名：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						曹操
+						<s:property value="username"/>
 					</td>
 				</tr>
 				
@@ -39,13 +40,13 @@
 						性别：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						女
+						<s:property value="gender"/>
 					</td>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						学历：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						研究生
+						<s:property value="education"/>
 					</td>
 				</tr>
 				<tr>
@@ -53,21 +54,21 @@
 						出生日期：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						2012-03-01
+						<s:property value="birthday"/>
 					</td>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						电话：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						12312121
+						<s:property value="cellphone"/>
 					</td>
 				</tr>
 				<tr>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						兴趣爱好：
 					</td>
-					<td class="ta_01" bgColor="#ffffff" colSpan="3">
-						 看电影, 旅游
+					<td class="ta_01" bgColor="#ffffff" colSpan="3">			
+						 <s:property value="hobby"/>
 					</td>
 				</tr>
 				<tr>
@@ -75,9 +76,11 @@
 						简历资料：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colSpan="3">
-						<a href="#" onclick="openWindow('user/userAction_download.do?userID=17','700','400')" class="cl_01">
-						     费用报销单模板.doc
-						</a>
+						<s:a action="user_download" namespace="/" cssClass="cl_01">
+							<s:param name="filename" value="filename"></s:param>
+							<s:param name="filepath" value="filepath"></s:param>
+							<s:property value="filename"/>
+						</s:a>
 					</td>
 				</tr>
 				<TR>
@@ -85,7 +88,7 @@
 						备注：
 					</TD>
 					<TD class="ta_01" bgColor="#ffffff" colSpan="3">
-						的
+						<s:property value="remark"/>
 					</TD>
 				</TR>
 				<TR>
@@ -101,6 +104,6 @@
 					</td>
 				</TR>
 			</table>
-		</form>
+		</s:form>
 	</body>
 </HTML>

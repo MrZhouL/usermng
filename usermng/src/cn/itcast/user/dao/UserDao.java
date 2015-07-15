@@ -72,7 +72,7 @@ public class UserDao {
 
 	public void delUser(String uid) {
 		try {
-			String sql = "delect from s_user where uid=? ";
+			String sql = "delete from s_user where uid=? ";
 			qr.update(sql,uid);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -86,6 +86,33 @@ public class UserDao {
 			
 			return qr.query(sql, new BeanHandler<User>(User.class),uid);
 			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void addUser(User user) {
+		try {
+			String sql = "insert into s_user values(?,?,?,?,?,?,?,?,?,?,?,?)";
+			qr.update(sql, user.getUid(), user.getUsername(),
+					user.getLoginname(), user.getLoginpass(), user.getGender(),
+					user.getBirthday(), user.getEducation(),
+					user.getCellphone(), user.getHobby(), user.getFilepath(),
+					user.getFilename(), user.getRemark());
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void updateUser(User user) {
+
+		try {
+			String sql = "update s_user set username=?,loginname=?,loginpass=?,gender=?,birthday=?,education=?,cellphone=?,hobby=?,filepath=?,filename=? ,remark=? where uid=? ";
+			qr.update(sql, user.getUsername(), user.getLoginname(),
+					user.getLoginpass(), user.getGender(), user.getBirthday(),
+					user.getEducation(), user.getCellphone(), user.getHobby(),
+					user.getFilepath(), user.getFilename(), user.getRemark(),
+					user.getUid());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

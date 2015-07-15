@@ -15,6 +15,19 @@
     		<result name="cquerySucc">/user/list.jsp</result>
     		<result type="redirectAction" name="delSucc">user_list</result>
     		<result name="doAddSucc">/user/add.jsp</result>
+    		
+    		<param name="uploadPath">/WEB-INF/upload</param>
+    		<result type="redirectAction" name="addSucc">user_list</result>
+    		
+    		<result name="doEditSucc">/user/edit.jsp</result>
+    		
+    		<result name="editSucc" type="redirectAction">user_list</result>
+    		<result name="doViewSucc">/user/view.jsp</result>
+    		
+    		<result name="donwloadSucc" type="stream">
+    			<param name="contentType">${contType}</param>
+    			<param name="contentDisposition">attachment;filename=${[1].filename}</param>
+    		</result>
     	</action>
     </package>
 </struts>

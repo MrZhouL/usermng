@@ -30,5 +30,13 @@ public class UserService {
 	public void delUser(String uid) {
 		userDao.delUser(uid);
 	}
+
+	public void addUser(User user) {
+		userDao.addUser(user);
+	}
+
+	public void edit(User user) {
+		userDao.updateUser(user);
+	}
 	
 }

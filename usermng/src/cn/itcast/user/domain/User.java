@@ -21,7 +21,6 @@ public class User {
 	private String remark;// 备注
 	
 	private String isUpload;//是否上传简历 1是2否
-	private String demo;
 	
 	
 

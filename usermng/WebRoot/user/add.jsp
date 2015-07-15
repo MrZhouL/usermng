@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Language" content="zh-cn">
@@ -20,7 +21,7 @@
 		});
 	</script>
 	<body>
-		<form id="userAction_save_do" name="Form1" action="<c:url value='/user/list.jsp'/>" method="post" enctype="multipart/form-data">
+		<s:form action="user_addUser" namespace="/" theme="simple" enctype="multipart/form-data">
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 				<tr>
@@ -36,7 +37,7 @@
 						登录名：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<input type="text" name="loginname" value="" id="userAction_save_do_loginname" class="bg"/>
+						<s:textfield name="loginname" cssClass="bg"></s:textfield>
 					</td>
 				</tr>
 				<tr>
@@ -44,13 +45,13 @@
 						 密码：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="password" name="loginpass" value="" id="loginpass"/>
+						<s:password name="loginpass"></s:password>
 					</td>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						用户姓名：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="text" name="username" value="" id="userAction_save_do_username" class="bg"/>
+						<s:textfield name="username" cssClass="bg"></s:textfield>
 					</td>
 				</tr>
 				<tr>
@@ -58,25 +59,15 @@
 						性别：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="radio" name="gender" id="gender男" value="男"/><label for="gender男">男</label>
-						<input type="radio" name="gender" id="gender女" value="女"/><label for="gender女">女</label>
-
+						<!-- <input type="radio" name="gender" id="gender男" value="男"/><label for="gender男">男</label>
+						<input type="radio" name="gender" id="gender女" value="女"/><label for="gender女">女</label> -->
+						<s:radio list="{'男','女'}" name="gender"></s:radio>
 					</td>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						学历：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						
-						<select name="education" id="education">
-						    <option value="" selected="selected">--选择学历--</option>
-						    <option value="博士">博士</option>
-						    <option value="硕士">硕士</option>
-						    <option value="研究生">研究生</option>
-						    <option value="本科">本科</option>
-						    <option value="专科">专科</option>
-						    <option value="高中">高中</option>
-						</select>
-
+						<s:select list="{'博士','硕士','研究生','本科','专科','高中'}" name="education" headerKey="" headerValue="--选择学历--"></s:select>
 					</td>
 				</tr>
 				<tr>
@@ -84,13 +75,13 @@
 						出生日期：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="text" name="birthday" size="20" value="" readonly="readonly" id="birthday"/>
+						<s:textfield name="birthday" size="20" readonly="readonly" id="birthday"></s:textfield>
 					</td>
 					<td align="center" bgColor="#f5fafe" class="ta_01">
 						电话：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="text" name="cellphone" value="" id="cellphone"/>
+						<s:textfield name="cellphone" ></s:textfield>
 					</td>
 				</tr>
 				<tr>
@@ -98,17 +89,7 @@
 						兴趣爱好：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colSpan="3">
-						<input type="checkbox" name="hobby" value="看电影" id="hobby-1"/>
-						<label for="hobby-1" class="checkboxLabel">看电影</label>
-						<input type="checkbox" name="hobby" value="旅游" id="hobby-2"/>
-						<label for="hobby-2" class="checkboxLabel">旅游</label>
-						<input type="checkbox" name="hobby" value="健身" id="hobby-3"/>
-						<label for="hobby-3" class="checkboxLabel">健身</label>
-						<input type="checkbox" name="hobby" value="购物" id="hobby-4"/>
-						<label for="hobby-4" class="checkboxLabel">购物</label>
-						<input type="checkbox" name="hobby" value="睡觉" id="hobby-5"/>
-						<label for="hobby-5" class="checkboxLabel">睡觉</label>
-						<input type="hidden" id="__multiselect_userAction_save_do_hobby" name="__multiselect_hobby" value="" /> 
+						<s:checkboxlist list="{'看电影','旅游','健身','购物','睡觉','听音乐'}" name="hobby"></s:checkboxlist>
 					</td>
 				</tr>
 				<tr>
@@ -116,7 +97,8 @@
 						简历资料：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colSpan="3">
-						<input type="file" name="upload" size="30" value="" id="userAction_save_do_upload"/>
+						<!-- <input type="file" name="upload" size="30" value="" id="userAction_save_do_upload"/> -->
+						<s:file name="upload" size="30" ></s:file>
 					</td>
 				</tr>
 				<TR>
@@ -124,7 +106,7 @@
 						备注：
 					</TD>
 					<TD class="ta_01" bgColor="#ffffff" colSpan="3">
-						<textarea name="remark" cols="30" rows="3" id="userAction_save_do_remark" style="WIDTH: 96%"></textarea>
+						<s:textarea name="remark" cols="30" rows="3" cssStyle="WIDTH: 96%"></s:textarea>
 					</TD>
 				</TR>
 				<TR>
@@ -150,6 +132,6 @@
 					</td>
 				</tr>
 			</table>
-		</form>
+		</s:form>
 	</body>
 </HTML>
